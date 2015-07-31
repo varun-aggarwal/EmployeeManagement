@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="">
+
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="js/garbagecollecter.js"></script>
+<script type="text/javascript">
+    
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+
+      // Callback that creates and populates a data table, 
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+    </script>
+<style>
+table, td, th {
+    border: 1px solid green;
+}
+
+th {
+    background-color: green;
+    color: white;
+}
+</style>
+</head>
+<img src="images/Qafe_logo.jpg" alt="Qafe Logo" style="width:200px;height:100px;" align="left">
+</img>
+<br>
+<br>
+<br>
+<br>
+<body align="center">
+<div>
+
+</div>
+
+<div  ng-controller="createEmployeeController">
+<h1>Welcome to Qafe Employee Management System</h1>
+
+<form name="myForm" ng-submit="submit()" align="left">
+<h2 align="left">Hire Employees in Mass</h2>
+  <label>Number of employees to be Hired:
+    <input type="text" name="noOfEmplyees" ng-model="noOfEmplyees"
+            required ng-trim="true">
+  </label>
+  <input type="submit" id="submit" value="Submit" />
+</form>
+
+
+<h2 align="left">Fire Employees in Mass</h2>
+<div align="left">
+  <label>Number of employees to be Fired:
+    <input type="text" name="noOffireEmplyees" ng-model="noOffireEmplyees"
+            required ng-trim="true">
+  </label>
+<button ng-click="fire()" >Submit</button>
+
+<br>
+<br><br>
+
+<div id="chart_div" style="width:400; height:300"></div>
+<ul style="color:Red">
+  {{ error}}
+</ul>
+</div>
+</body>
+</html>

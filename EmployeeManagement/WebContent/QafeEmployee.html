@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script type="text/javascript" src="js/employee.js"></script>
+<style>
+table, td, th {
+    border: 1px solid green;
+}
+
+th {
+    background-color: green;
+    color: white;
+}
+</style>
+</head>
+<img src="images/Qafe_logo.jpg" alt="Qafe Logo" style="width:200px;height:100px;" align="left">
+</img>
+<br>
+<br>
+<br>
+<br>
+<body align="center">
+<div>
+
+</div>
+
+<div ng-app="" ng-controller="createEmployeeController">
+<h1>Welcome to Qafe Employee Management System</h1>
+
+<form name="myForm" ng-submit="submit()" align="left">
+<h2 align="left">Create Employee Section</h2>
+  <label>Name:
+    <input type="text" name="name" ng-model="name"
+            required ng-trim="true">
+  </label>
+  <label>role:
+    <input type="text" name="role" ng-model="role"
+            required ng-trim="true">
+  </label>
+    <label>Type:
+    <select id="emptype" ng-model="emptype" ><option value =""></option><option value="Internal">Internal</option><option value ="External">External</option></select>
+  </label>
+  <label>Bank Account Number:
+    <input type="text" name="bankAccountNumber" ng-model="bankAccountNumber"
+           required ng-trim="true">
+  </label>
+  <input type="submit" id="submit" value="Submit" />
+</form>
+<br>
+<br><br>
+<div ng-show="flagresult" align="center">
+<table>
+    <tr>
+      <th>Employee Name</th>
+      <th>Employee Type</th>
+      <th>Employee Role</th>
+    </tr>
+    <tr ng-repeat="tmp in result">
+      <td align="center" >{{tmp.name}}</td>
+      <td align="center">{{tmp.empType}}</td>
+      <td align="center">{{tmp.role}}</td>
+    </tr>
+  </table>
+<br><br>
+<h3 align="left">Check Employee Type</h3>
+<div align="left">
+<label >Select Employee Name to check if this is an Internal or External: <select id="employeeStatus" ng-model="employeeStatus" ng-options="c as c.name for c in result" multiple ng-change="checkEmployee()">
+</select> 
+    </label><br>
+    <br><br>
+    <label ng-show="chkEmpType" > Selected Employee is of : {{isemployee}}  : Type </label>
+ </div>
+ 
+ <br><br>
+<h3 align="left">Generate Employee Salary</h3>
+<div align="left">
+<label >Select Employee Name to generate Salary: <select id="genSalDropDown" ng-model="genSalDropDown" ng-options="c as c.name for c in result" multiple ng-change="genrateEmployeeSalary()">
+</select> 
+    </label><br>
+    <br><br>
+    <label ng-show="isSalGenerated" > Selected Employee salary for current Month is : EURO {{employeeSalary}}</label>
+ </div>
+</div>
+<ul style="color:Red">
+  {{ error}}
+</ul>
+</div>
+</body>
+</html>
